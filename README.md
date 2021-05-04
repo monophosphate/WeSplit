@@ -1,4 +1,4 @@
-# WeSplit-SwiftUI
+# WeSplit
 Simple check splitting app: project from Hacking with Swift, this is my first iOS application.
 
 ## Demo
