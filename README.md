@@ -2,7 +2,7 @@
 Simple check splitting app: project from Hacking with Swift, this is my first iOS application.
 
 ## Demo
-<img src="https://dendev.net/WeSplit/demo.gif"/>
+<img src="https://dendev.net/Demos/WeSplit.gif"/>
 
 ## Notes
 #### Under the hood:
