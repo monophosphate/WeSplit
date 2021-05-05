@@ -2,7 +2,7 @@
 Simple check splitting app: project from Hacking with Swift, this is my first iOS application.
 
 ## Demo
-<img src="https://dendev.net/Demos/WeSplit.gif"/>
+<img src="https://dendev.net/Demos/WeSplit2.gif"/>
 
 ## Notes
 #### Under the hood:
@@ -15,15 +15,21 @@ These are the variables that allow the app to save user inputs to be used in the
     let tipOptions = [0, 10, 15, 20, 25]
 
 ```
-The calculations below take the variables above and calculates a split check including tip, it is then returned to be displayed using calculatedCost. 
+The calculations below take the variables above and calculates a split check including tip, 
+it is then returned to be displayed using calculatedCost("total") for the total amount per person, or
+calculatedCost("tip") to get only the tip value. 
 
 ```swift
-    var calculatedCost: Double {
+    func calculatedCost(_ type: String) -> Double {
         let people = Double(numberOfPeople + 2)
         let tip = Double(tipOptions[tipPercent]) / 100
         let amount = Double(checkAmount) ?? 0
-        
-        return amount * (1 + tip) / people
+        if type == "total" {
+            return amount * (1 + tip) / people
+        } else if type == "tip" {
+            return amount * tip
+        }
+        return 0
     }
 ```
 
