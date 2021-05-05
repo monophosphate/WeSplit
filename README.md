@@ -15,9 +15,9 @@ These are the variables that allow the app to save user inputs to be used in the
     let tipOptions = [0, 10, 15, 20, 25]
 
 ```
-The calculations below take the variables above and calculates a split check including tip, 
+The function below takes the variables above and depending on input, calculates a split check including tip or just a tip, 
 it is then returned to be displayed using calculatedCost("total") for the total amount per person, or
-calculatedCost("tip") to get only the tip value. 
+calculatedCost("tip") to get only the tip amount. 
 
 ```swift
     func calculatedCost(_ type: String) -> Double {
