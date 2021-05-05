@@ -11,15 +11,18 @@ struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = 0
     @State private var tipPercent = 2
-    
     let tipOptions = [0, 10, 15, 20, 25]
     
-    var calculatedCost: Double {
+    func calculatedCost(_ type: String) -> Double {
         let people = Double(numberOfPeople + 2)
         let tip = Double(tipOptions[tipPercent]) / 100
         let amount = Double(checkAmount) ?? 0
-        
-        return amount * (1 + tip) / people
+        if type == "total" {
+            return amount * (1 + tip) / people
+        } else if type == "tip" {
+            return amount * tip
+        }
+        return 0
     }
     
     var body: some View {
@@ -45,8 +48,10 @@ struct ContentView: View {
                 }
                 
                 Section(header: Text("Result:")) {
-                    Text("A total of \(calculatedCost, specifier: "$%.2f") is split between \(numberOfPeople + 2) people.")
-                        .font(.headline)
+                    Text("\(calculatedCost("total"), specifier: "$%.2f per person")")
+                        .font(.title2)
+                    Text("Total tip: \(calculatedCost("tip"), specifier: "$%.2f")")
+                        .foregroundColor(tipPercent == 0 ? Color.red : Color.gray)
                 }
             }
             .navigationBarTitle("WeSplit")
